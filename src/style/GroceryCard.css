@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+input, button {
+    border-radius: .3em;
+    border: none;
+    outline: none;
+}
+
+.grocery-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    background-color: rgb(114, 194, 231);
+}
+
+.grocery-card button, .grocery-card input {
+    padding: .25em 1em;
+}
+
+/* .inner-grocery-card {
+    width: 50%;
+} */
+
+.create-item-form {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    width: 50%;
+    margin: auto;
+    padding: 1em 0em;
+}
+
+.create-item-form > button[type="submit"] {
+    margin-left: 1em;
+}
+
