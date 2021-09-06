@@ -31,7 +31,7 @@ input, button {
     padding: 1em 0em;
 }
 
-.create-item-form > button[type="submit"] {
-    margin-left: 1em;
+.create-item-form > input {
+    margin-right: 1em;
 }
 
