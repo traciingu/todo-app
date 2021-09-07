@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.google.com/specimen/Josefin+Sans');
 
 * {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 input, button {
@@ -10,7 +10,7 @@ input, button {
     outline: none;
 }
 
-.grocery-card {
+.todo-card {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -19,11 +19,11 @@ input, button {
     background-color: rgb(114, 194, 231);
 }
 
-.grocery-card button, .grocery-card input {
+.todo-card button, .todo-card input {
     padding: .25em 1em;
 }
 
-.create-item-form {
+.create-todo-form {
     display: grid;
     grid-template-columns: 4fr 1fr;
     width: 50%;
@@ -31,7 +31,7 @@ input, button {
     padding: 1em 0em;
 }
 
-.create-item-form > input {
+.create-todo-form > input {
     margin-right: 1em;
 }
 

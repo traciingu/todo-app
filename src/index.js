@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import GroceryCard from './GroceryCard';
+import TodoCard from './TodoCard';
 
 export default function App(){
     return(
         <div>
-            <GroceryCard/>
+            <TodoCard/>
         </div>
     );
 }
