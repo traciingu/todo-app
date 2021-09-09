@@ -6,15 +6,13 @@ import TodoList from './TodoList';
 export default function TodoCard() {
     const [todos, setTodos] = useState([]);
 
-    const addTodo = (e, name) => {
-        e.preventDefault();
-        setTodos([...todos, name]);
+    const addTodo = (name, completed) => {
+        setTodos([...todos, {name: name, completed: completed}]);
     };
 
-    const editTodo = (e, id) => {
-        e.preventDefault();
+    const editTodo = (id, name, completed) => {
         const newTodos = [...todos];
-        newTodos.splice(id, 1, e.target[0].value);
+        newTodos.splice(id, 1, {name: name, completed: completed});
         setTodos(newTodos);
     };
 
@@ -30,7 +28,15 @@ export default function TodoCard() {
             <TodoForm addTodo={addTodo} />
             <TodoList todos={todos} editTodo={editTodo} removeTodo={removeTodo} />
 
-            {todos.length >= 1 ? <button onClick={() => setTodos([])} style={{ margin: "1.5em 0em" }}>Clear Tasks</button> : ""}
+            <div className="todo-card-options">
+                <p>{todos.length} items left</p>
+                <div className="todo-card-filter">
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                </div>
+                {todos.length >= 1 ? <button onClick={() => setTodos([])} style={{ margin: "1.5em 0em" }}>Clear Tasks</button> : ""}
+            </div>
 
         </div>
     );
