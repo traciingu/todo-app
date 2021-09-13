@@ -24,6 +24,20 @@ export default function TodoCard() {
         setTodos(newTodos);
     };
 
+    const filterTodos = () => {
+        return (
+            todos.filter(todo => {
+                if(activeFilter === "all") {
+                    return todo;
+                } else if(activeFilter === "active") {
+                    return todo.completed == false;
+                } else if(activeFilter === "completed") {
+                    return todo.completed == true;
+                }
+            })
+        )
+    };
+
     return (
         <div className="todo-card">
             <header>
@@ -35,17 +49,17 @@ export default function TodoCard() {
 
             <div className="todo-card-body">
                 <TodoForm addTodo={addTodo} />
-                <TodoList todos={todos} editTodo={editTodo} removeTodo={removeTodo} />
+                <TodoList todos={filterTodos()} editTodo={editTodo} removeTodo={removeTodo} />
 
                 <div className="todo-card-options">
                     <div className="inner-card-options">
                         <p>{todos.length} items left</p>
-                        {todos.length >= 1 ? <button onClick={() => setTodos([])} >Clear Tasks</button> : ""}
+                        <button onClick={() => setTodos([])} >Clear Tasks</button>
                     </div>
                     <div className="todo-card-filters">
-                        <button>All</button>
-                        <button>Active</button>
-                        <button>Completed</button>
+                        <button onClick={() => setActiveFilter('all')} className={activeFilter.toLowerCase() === "all" ? "active" : ""}>All</button>
+                        <button onClick={() => setActiveFilter('active')} className={activeFilter.toLowerCase() === "active" ? "active" : ""}>Active</button>
+                        <button onClick={() => setActiveFilter('completed')} className={activeFilter.toLowerCase() === "completed" ? "active" : ""}>Completed</button>
                     </div>
                 </div>
             </div>
