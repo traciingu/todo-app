@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './style/TodoList.css';
-import {AiOutlineCheckCircle, AiFillCheckCircle} from 'react-icons/ai';
+import CompleteButton from './CompleteButton';
+import {FiEdit2, FiTrash2, FiCheck, FiXCircle} from 'react-icons/fi';
 
 export default function TodoList({ todos, editTodo, removeTodo }) {
     const [editingItemId, setEditingItemId] = useState(-1);
@@ -15,23 +16,23 @@ export default function TodoList({ todos, editTodo, removeTodo }) {
     };
 
     return (
-        <div style={{ width: "50%" }}>
+        <div className="todo-list">
             {todos.map((todo, index) => {
                 return editingItemId === index ?
-                    <form className="todo-item" key={index} onSubmit={e => { console.log(e.target[0].value); submitEdit(e, index, e.target[0].value, todo.completed) }}>
-                        <div className="complete-icon">{todo.completed ? <AiFillCheckCircle onClick={() => editTodo(index, todo.name, !todo.completed)}/> : <AiOutlineCheckCircle onClick={() => editTodo(index, todo.name, !todo.completed)}/>}</div>
-                        <input type="text" value={editInput} onChange={(e) => { setEditInput(e.target.value) }} />
+                    <form className="todo-item card-item" key={index} onSubmit={e => { console.log(e.target[1].value); submitEdit(e, index, e.target[1].value, todo.completed) }}>
+                        <CompleteButton isComplete={todo.completed} handleClick={editTodo} handleClickParams={[index, todo.name, !todo.completed]} />
+                        <input type="text" className={todo.completed ? "strike" : ""} value={editInput} onChange={(e) => { setEditInput(e.target.value) }} />
                         <div className="todo-item-options">
-                            <button type="button" className="todo-item-cancel" onClick={() => setEditingItemId(-1)}>C</button>
-                            <button type="submit" className="todo-item-submit">S</button>
+                            <button type="button" className="todo-item-cancel" onClick={() => setEditingItemId(-1)}><FiXCircle/></button>
+                            <button type="submit" className="todo-item-submit"><FiCheck/></button>
                         </div>
                     </form>
-                    : <div className="todo-item" key={index}>
-                        <div className="complete-icon">{todo.completed ? <AiFillCheckCircle onClick={() => editTodo(index, todo.name, !todo.completed)}/> : <AiOutlineCheckCircle onClick={() => editTodo(index, todo.name, !todo.completed)}/>}</div>
-                        <p className={todo.completed ? "strike" : ""}>{todo.name}</p>
+                    : <div className="todo-item card-item" key={index}>
+                        <CompleteButton isComplete={todo.completed} handleClick={editTodo} handleClickParams={[index, todo.name, !todo.completed]} />
+                        <p className={"todo-item-name card-item-name " + (todo.completed ? "strike" : "")}>{todo.name}</p>
                         <div className="todo-item-options">
-                            <button className="todo-item-delete" onClick={() => { removeTodo(index); }}>D</button>
-                            <button className="todo-item-edit" onClick={() => { setEditingItemId(index); setEditInput(todo.name); }}>E</button>
+                            <button className="todo-item-delete" onClick={() => { removeTodo(index); }}><FiTrash2/></button>
+                            <button className="todo-item-edit" onClick={() => { setEditingItemId(index); setEditInput(todo.name); }}><FiEdit2/></button>
                         </div>
                     </div>
             }
