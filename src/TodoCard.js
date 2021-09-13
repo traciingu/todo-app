@@ -54,7 +54,7 @@ export default function TodoCard() {
                 <div className="todo-card-options">
                     <div className="inner-card-options">
                         <p>{todos.length} items left</p>
-                        <button onClick={() => setTodos([])} >Clear Tasks</button>
+                        <button onClick={() => setTodos(todos.filter(todo => todo.completed == false))} >Clear Completed</button>
                     </div>
                     <div className="todo-card-filters">
                         <button onClick={() => setActiveFilter('all')} className={activeFilter.toLowerCase() === "all" ? "active" : ""}>All</button>
