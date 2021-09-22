@@ -1,6 +1,3 @@
-body {
-    background-color: rgb(245, 245, 245);
-}
 
 input, button {
     border-radius: .3em;
@@ -11,13 +8,40 @@ button {
     padding: .25em;
 }
 
+.todo-card {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-card.light {
+    background-color: rgb(245, 245, 245);
+}
+
+.todo-card.dark {
+    background-color: hsl(235, 21%, 11%);
+}
+
 header {
     width: 100%;
+    padding-bottom: 7em;
+    transition: background-image 0.5s ease;
+}
+
+header.light {
     background: url("../images/bg-mobile-light.jpg");
     background-position: center;
     background-repeat: no-repeat; 
     background-size: cover;
-    padding-bottom: 7em;
+}
+
+header.dark {
+    background: url("../images/bg-mobile-dark.jpg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
 }
 
 .inner-header {
@@ -28,7 +52,7 @@ header {
     justify-content: space-between;
 }
 
-.title{
+.title {
     letter-spacing: .5em;
     color: white;
     padding: 0;
@@ -41,13 +65,6 @@ header {
     background-color: inherit;
 }
 
-.todo-card {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
 .todo-card-body {
     width: 80%;
     margin: 0 auto;
@@ -56,11 +73,20 @@ header {
 
 .todo-card-options {
     max-width: 100%;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 .todo-card-options * {
     color: hsl(236, 9%, 61%);
-    background-color: inherit;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.todo-card-options.light * {
+    background-color: white;
+}
+
+.todo-card-options.dark * {
+    background-color: hsl(235, 24%, 19%);
 }
 
 .inner-card-options {
@@ -68,13 +94,20 @@ header {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    background-color: white;
     padding: 0 1.25em;
     border-radius: 0 0 .4em .4em;
 }
 
 .inner-card-options * {
     font-size: .8em;
+}
+
+.inner-card-options.light {
+    background-color: white;
+}
+
+.inner-card-options.dark {
+    background-color: hsl(235, 24%, 19%);
 }
 
 .todo-card-filters {
@@ -85,7 +118,14 @@ header {
     display: flex;
     justify-content: center;
     border-radius: .4em;
+}
+
+.todo-card-filters.light {
     background-color: white;
+}
+
+.todo-card-filters.dark {
+    background-color: hsl(235, 24%, 19%);
 }
 
 .todo-card-filters > * {
@@ -100,7 +140,6 @@ header {
 
 .complete-btn {
     padding: 0;
-    background-color: inherit;
 }
 
 .complete-btn-circle {
@@ -118,9 +157,7 @@ header {
     grid-template-columns: 1fr 7fr 2fr;
     padding: .75em 1em;
     border-radius: .4em;
-    background-color: white;
 }
-
 
 .card-item > * {
     display: flex;
@@ -128,12 +165,46 @@ header {
     align-items: center;
 }
 
+.card-item, .card-item * {
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
 .card-item * {
     font-size: 1rem;
 }
 
-.card-item-name {
-    padding-left: .25em;
-    background-color: inherit;
+.card-item.light {
+    background-color: white;
+    color: black;
 }
 
+.card-item.light * {
+    background-color: white;
+    color: initial;
+}
+
+.card-item.dark {
+    background-color:  hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+}
+
+.card-item.dark * {
+    background-color: hsl(235, 24%, 19%);
+    color: hsl(236, 9%, 61%);
+}
+
+.card-item > input {
+    padding-left: .25em;
+}
+
+.card-item.completed > input {
+    opacity: 0.5;
+}
+
+.card-item > p {
+    padding-left: .25em;
+}
+
+.card-item.completed > p {
+    opacity: 0.5;
+}

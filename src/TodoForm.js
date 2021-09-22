@@ -3,7 +3,7 @@ import './style/TodoForm.css';
 import CompleteButton from './CompleteButton';
 import {FiPlus} from 'react-icons/fi';
 
-export default function TodoForm({ addTodo }) {
+export default function TodoForm({ addTodo, themeState }) {
     const [name, setName] = useState("");
     const [completed, setCompleted] = useState(false);
 
@@ -22,7 +22,7 @@ export default function TodoForm({ addTodo }) {
     };
 
     return (
-        <form className="create-todo-form card-item" onSubmit={handleSubmit}>
+        <form className={`create-todo-form card-item ${themeState} ${completed ? "completed" : ""}`} onSubmit={handleSubmit}>
             <CompleteButton isComplete={completed} handleClick={handleClick}/>
             <input type="text" placeholder="Create a new todo..." className={"card-item-name " + (completed ? "strike" : "")} value={name} onChange={(e) => setName(e.target.value)} />
             <button type="submit" className="create-todo-form-btn"><FiPlus/></button>

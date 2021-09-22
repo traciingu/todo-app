@@ -25,6 +25,5 @@
 }
 
 .todo-item-options > * {
-    background-color: inherit;
-    color: hsl(236, 9%, 61%);
+    background-color: transparent;
 }
