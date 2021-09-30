@@ -6,6 +6,7 @@ import {FiEdit2, FiTrash2, FiCheck, FiXCircle} from 'react-icons/fi';
 export default function TodoList({ todos, editTodo, removeTodo, themeState }) {
     const [editingItemId, setEditingItemId] = useState(-1);
     const [editInput, setEditInput] = useState("");
+    const [removeItemId, setRemoveItemId] = useState(-1);
 
 
     const submitEdit = (e, id, name, completed) => {
@@ -13,6 +14,15 @@ export default function TodoList({ todos, editTodo, removeTodo, themeState }) {
         editTodo(id, name, completed);
         setEditingItemId(-1);
         setEditInput("");
+    };
+
+    const handleRemove = (index) => {
+        setRemoveItemId(index); 
+
+        setTimeout(() => {
+            removeTodo(index);
+            setRemoveItemId(-1);
+        }, 470);
     };
 
     return (
@@ -27,11 +37,11 @@ export default function TodoList({ todos, editTodo, removeTodo, themeState }) {
                             <button type="submit" className="todo-item-submit"><FiCheck/></button>
                         </div>
                     </form>
-                    : <div className={`todo-item card-item ${themeState} ${todo.completed ? "completed" : ""}`} key={index}>
+                    : <div className={`todo-item card-item ${themeState} ${todo.completed ? "completed" : ""} ${removeItemId === index ? "removed" : ""}`} key={index}>
                         <CompleteButton isComplete={todo.completed} handleClick={editTodo} handleClickParams={[index, todo.name, !todo.completed]} />
                         <p className={"todo-item-name card-item-name " + (todo.completed ? "strike" : "")}>{todo.name}</p>
                         <div className="todo-item-options">
-                            <button className="todo-item-delete" onClick={() => { removeTodo(index); }}><FiTrash2/></button>
+                            <button className="todo-item-delete" onClick={() => { handleRemove(index) }}><FiTrash2/></button>
                             <button className="todo-item-edit" onClick={() => { setEditingItemId(index); setEditInput(todo.name); }}><FiEdit2/></button>
                         </div>
                     </div>
