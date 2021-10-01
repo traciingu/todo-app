@@ -12,6 +12,16 @@
     to { opacity: 1 }
 }
 
+@media only screen and (min-width: 500px) {
+    .todo-item {
+        padding: 1.15em 1em;
+    }
+
+    .todo-item * {
+        font-size: 1.25rem;
+    }
+}
+
 .removed {
     animation: fadeout .5s;
 }

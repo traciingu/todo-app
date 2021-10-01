@@ -22,7 +22,7 @@ export default function TodoForm({ addTodo, themeState }) {
     };
 
     return (
-        <form className={`create-todo-form card-item ${themeState} ${completed ? "completed" : ""}`} onSubmit={handleSubmit}>
+        <form className={`card-item create-todo-form ${themeState} ${completed ? "completed" : ""}`} onSubmit={handleSubmit}>
             <CompleteButton isComplete={completed} handleClick={handleClick}/>
             <input type="text" placeholder="Create a new todo..." className={"card-item-name " + (completed ? "strike" : "")} value={name} onChange={(e) => setName(e.target.value)} />
             <button type="submit" className="create-todo-form-btn"><FiPlus/></button>

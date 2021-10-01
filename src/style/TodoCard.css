@@ -11,6 +11,7 @@ button {
 .todo-card {
     width: 100%;
     height: fit-content;
+    min-height: 100vh;
     margin: 0 auto;
     padding-bottom: 3em;
     display: flex;
@@ -32,18 +33,33 @@ header {
 }
 
 header.light {
-    background: url("../images/bg-mobile-light.jpg");
+    background-image: url("../images/bg-mobile-light.jpg");
     background-position: center;
     background-repeat: no-repeat; 
     background-size: cover;
 }
 
 header.dark {
-    background: url("../images/bg-mobile-dark.jpg");
+    background-image: url("../images/bg-mobile-dark.jpg");
     background-position: center;
     background-repeat: no-repeat; 
     background-size: cover;
 }
+
+@media only screen and (min-width: 500px) {
+    header  {
+        padding-bottom: 10em;
+    }
+
+    header.light {
+        background-image: url("../images/bg-desktop-light.jpg");
+    }
+
+    header.dark {
+        background-image: url("../images/bg-desktop-dark.jpg");
+    }
+}
+
 
 .inner-header {
     width: 80%;
@@ -75,6 +91,22 @@ header.dark {
     to {opacity: 1;}
   }
 
+  @media only screen and (min-width: 500px) {
+    .inner-header  {
+        width: 40%;
+        margin-top: 5em;
+   }
+
+   .title {
+    font-size: 2.5rem;
+   }
+
+   .theme-switch-btn {
+    font-size: 2rem;
+    padding: 0;
+   }
+}
+
 .todo-card-body {
     width: 80%;
     margin: 0 auto;
@@ -99,6 +131,13 @@ header.dark {
     background-color: hsl(235, 24%, 19%);
 }
 
+@media only screen and (min-width: 500px) {
+    .todo-card-body {
+        width: 40%;
+        margin-top: -7em;
+    }
+}
+
 .inner-card-options {
     max-width: 100%;
     display: flex;
@@ -109,7 +148,7 @@ header.dark {
 }
 
 .inner-card-options * {
-    font-size: .8em;
+    font-size: .8rem;
 }
 
 .inner-card-options.light {
@@ -118,6 +157,16 @@ header.dark {
 
 .inner-card-options.dark {
     background-color: hsl(235, 24%, 19%);
+}
+
+@media only screen and (min-width: 500px) {
+    .inner-card-options {
+        padding: 0 2em;
+    }
+
+    .inner-card-options * {
+        font-size: .9rem;
+    }
 }
 
 .todo-card-filters {

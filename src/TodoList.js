@@ -29,7 +29,7 @@ export default function TodoList({ todos, editTodo, removeTodo, themeState }) {
         <div className="todo-list">
             {todos.map((todo, index) => {
                 return editingItemId === index ?
-                    <form className={`todo-item card-item ${themeState} ${todo.completed ? "completed" : ""}`} key={index} onSubmit={e => { console.log(e.target[1].value); submitEdit(e, index, e.target[1].value, todo.completed) }}>
+                    <form className={`card-item todo-item ${themeState} ${todo.completed ? "completed" : ""}`} key={index} onSubmit={e => { console.log(e.target[1].value); submitEdit(e, index, e.target[1].value, todo.completed) }}>
                         <CompleteButton isComplete={todo.completed} handleClick={editTodo} handleClickParams={[index, todo.name, !todo.completed]} />
                         <input type="text" className={todo.completed ? "strike" : ""} value={editInput} onChange={(e) => { setEditInput(e.target.value) }} />
                         <div className="todo-item-options">
@@ -37,7 +37,7 @@ export default function TodoList({ todos, editTodo, removeTodo, themeState }) {
                             <button type="submit" className="todo-item-submit"><FiCheck/></button>
                         </div>
                     </form>
-                    : <div className={`todo-item card-item ${themeState} ${todo.completed ? "completed" : ""} ${removeItemId === index ? "removed" : ""}`} key={index}>
+                    : <div className={`card-item todo-item ${themeState} ${todo.completed ? "completed" : ""} ${removeItemId === index ? "removed" : ""}`} key={index}>
                         <CompleteButton isComplete={todo.completed} handleClick={editTodo} handleClickParams={[index, todo.name, !todo.completed]} />
                         <p className={"todo-item-name card-item-name " + (todo.completed ? "strike" : "")}>{todo.name}</p>
                         <div className="todo-item-options">
